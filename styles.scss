@@ -15,6 +15,86 @@
  * Descripcion: Elemento General
 */
 
+//varaible
+
+$pagination-padding-y:              .375rem;
+$pagination-padding-x:              .75rem;
+$pagination-padding-y-sm:           .25rem;
+$pagination-padding-x-sm:           .5rem;
+$pagination-padding-y-lg:           .75rem;
+$pagination-padding-x-lg:           1.5rem;
+
+$pagination-color:                  $link-color;
+$pagination-bg:                     $white;
+$pagination-border-width:           $border-width;
+$pagination-border-radius:          $border-radius;
+$pagination-margin-start:           -$pagination-border-width;
+$pagination-border-color:           $gray-300;
+
+$pagination-focus-color:            $link-hover-color;
+$pagination-focus-bg:               $gray-200;
+$pagination-focus-box-shadow:       $input-btn-focus-box-shadow;
+$pagination-focus-outline:          0;
+
+$pagination-hover-color:            $link-hover-color;
+$pagination-hover-bg:               $gray-200;
+$pagination-hover-border-color:     $gray-300;
+
+$pagination-active-color:           $component-active-color;
+$pagination-active-bg:              $component-active-bg;
+$pagination-active-border-color:    $pagination-active-bg;
+
+$pagination-disabled-color:         $gray-600;
+$pagination-disabled-bg:            $white;
+$pagination-disabled-border-color:  $gray-300;
+
+$pagination-transition:              color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+
+$pagination-border-radius-sm:       $border-radius-sm;
+$pagination-border-radius-lg:       $border-radius-lg;
+
+//
+
+
+//mixings
+
+@mixin pagination-size($padding-y, $padding-x, $font-size, $border-radius) {
+  .page-link {
+    padding: $padding-y $padding-x;
+    @include font-size($font-size);
+  }
+
+  .page-item {
+    @if $pagination-margin-start == (-$pagination-border-width) {
+      &:first-child {
+        .page-link {
+          @include border-start-radius($border-radius);
+        }
+      }
+
+      &:last-child {
+        .page-link {
+          @include border-end-radius($border-radius);
+        }
+      }
+    } @else {
+      //Add border-radius to all pageLinks in case they have left margin
+      .page-link {
+        @include border-radius($border-radius);
+      }
+    }
+  }
+}
+
+//
+
+$base-color: #c6538c;
+$border-dark: rgba($base-color, 0.88);
+
+.alert {
+  border: 1px solid $border-dark;
+}
+
 body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 16px;
@@ -76,7 +156,7 @@ b, strong {
   font-family: 'Montserrat', sans-serif;
 
   &:hover {
-    background-color: rgb(45, 62, 153);
+    background-color: rgb(42, 99, 204);
     padding: 10px;
     border-radius: 10px;
   }
@@ -108,7 +188,7 @@ ul menu {
 }
 
 .topnav a:hover {
-  background-color: #222;
+  background-color: #2e4fe0;
 }
 
 .menu {
@@ -481,7 +561,7 @@ footer {
 }
 
 .button {
-  background-color: #18A0FB;
+  background-color: #1960e6;
 
   /* Green */
   border: none;
@@ -509,7 +589,7 @@ footer {
 }
 
 #button :hover {
-  background-color: #153374;
+  background-color: #2357c7;
 }
 
 #banner-txt {
@@ -547,6 +627,7 @@ footer {
 
 .nosotros {
   width: 100%;
+
 }
 
 .grid-vision {
@@ -573,6 +654,7 @@ footer {
 
 .contacto {
   padding-left: 45px;
+  justify-content: center;
 }
 
 .grid-flex {
